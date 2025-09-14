@@ -13,7 +13,9 @@ import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   return (
-    <div className="flex flex-col min-h-screen"> {/* Flex column for sticky footer */}
+    <div className="flex flex-col min-h-screen">
+      {" "}
+      {/* Flex column for sticky footer */}
       <Router>
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">

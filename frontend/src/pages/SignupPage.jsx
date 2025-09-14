@@ -48,7 +48,7 @@ const SignupPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200"
-            required
+          required
         />
         <button
           className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
