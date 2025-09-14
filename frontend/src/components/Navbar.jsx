@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ThemeContext } from "../context/ThemeContext";
+
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { darkMode, toggleTheme } = useContext(ThemeContext);
+
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
@@ -63,13 +63,6 @@ const Navbar = () => {
             </>
           ) : null}
 
-          {/* Dark Mode Toggle
-          <button
-            onClick={toggleTheme}
-            className="ml-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded"
-          >
-            {darkMode ? "☀️ Light" : "🌙 Dark"}
-          </button> */}
         </div>
       </div>
     </nav>
