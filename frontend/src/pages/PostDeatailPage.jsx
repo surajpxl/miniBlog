@@ -8,9 +8,13 @@ const PostDetailPage = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [commentText, setCommentText] = useState("");
+  const [showComments, setShowComments] = useState(false); // 👈 NEW state
 
-  // Logged-in user from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+  const isOwner =
+    user?._id && post?.author?._id && user._id === post?.author._id;
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -30,8 +34,6 @@ const PostDetailPage = () => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
 
-    const token = localStorage.getItem("token");
-
     try {
       await axios.delete(`http://localhost:5000/api/posts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -43,12 +45,44 @@ const PostDetailPage = () => {
     }
   };
 
+  const handleLike = async () => {
+    if (!user) return alert("Login to like posts");
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/posts/${id}/like`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setPost({ ...post, likes: res.data.likes });
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+    }
+  };
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+    if (!commentText.trim()) return;
+
+    try {
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      const res = await axios.post(
+        `http://localhost:5000/api/posts/${id}/comment`,
+        { text: commentText },
+        { headers }
+      );
+
+      setPost({ ...post, comments: res.data });
+      setCommentText("");
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+    }
+  };
+
   if (loading) return <p className="text-center mt-10">Loading...</p>;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
   if (!post) return <p className="text-center mt-10">Post not found!</p>;
 
-  // Check if logged-in user is the author
-  const isOwner = user?._id && post.author?._id && user._id === post.author._id;
+  const hasLiked = user && post.likes?.includes(user._id);
 
   return (
     <div className="container mx-auto px-6 py-10 max-w-3xl">
@@ -82,17 +116,20 @@ const PostDetailPage = () => {
             ← Back
           </button>
 
+          <button
+            onClick={handleLike}
+            className={`px-3 py-1 rounded ${
+              hasLiked ? "bg-red-500 text-white" : "bg-gray-300"
+            }`}
+          >
+            ❤️ {post.likes?.length || 0}
+          </button>
+
           {isOwner && (
             <>
-              <button
-                onClick={() => navigate("/")}
-                className=" px-4 py-2 bg-blue-300 text-white rounded hover:bg-blue-400"
-              >
-               Home
-              </button>
               <Link
                 to={`/edit/${post._id}`}
-                className="px-4 py-2 ml-70 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
               >
                 ✏️ Edit
               </Link>
@@ -102,10 +139,55 @@ const PostDetailPage = () => {
               >
                 🗑️ Delete
               </button>
-
             </>
           )}
         </div>
+
+        {/* Toggle Comments */}
+        <button
+          onClick={() => setShowComments(!showComments)}
+          className="mt-6 px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+        >
+          {showComments
+            ? "🙈 Hide Comments"
+            : `💬 Show Comments (${post.comments?.length || 0})`}
+        </button>
+
+        {/* Comment Section */}
+        {showComments && (
+          <>
+            {/* Comment Form */}
+            <form onSubmit={handleComment} className="mt-4 flex flex-col gap-2">
+              <input
+                type="text"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                placeholder="Add a comment..."
+                className="p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+              />
+              <button
+                type="submit"
+                className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 w-max"
+              >
+                Comment
+              </button>
+            </form>
+
+            {/* Display Comments */}
+            {post.comments?.length > 0 && (
+              <div className="mt-4 border-t pt-2 space-y-2 max-h-40 overflow-y-scroll">
+                {post.comments.map((c, i) => (
+                  <div key={i} className="text-sm">
+                    <strong>
+                      {c.user?.name || c.guestName || "Anonymous"}:
+                    </strong>{" "}
+                    {c.text}
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
