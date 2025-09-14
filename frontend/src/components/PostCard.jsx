@@ -6,8 +6,7 @@ const PostCard = ({ post, onDelete }) => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
-  const isOwner =
-    user?._id && post.author?._id && user._id === post.author._id;
+  const isOwner = user?._id && post.author?._id && user._id === post.author._id;
 
   const [localPost, setLocalPost] = useState({
     ...post,
@@ -18,9 +17,7 @@ const PostCard = ({ post, onDelete }) => {
   // Only track hasLiked if user logged in (guests can't be tracked)
   const [hasLiked, setHasLiked] = useState(
     user
-      ? localPost.likes.some(
-          (like) => like.user?.toString() === user._id
-        )
+      ? localPost.likes.some((like) => like.user?.toString() === user._id)
       : false
   );
 

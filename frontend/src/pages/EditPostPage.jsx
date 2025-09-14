@@ -16,7 +16,9 @@ const EditPostPage = () => {
       .get(`http://localhost:5000/api/posts/${id}`)
       .then((res) => {
         setInitialData(res.data);
-        setImagePreview(res.data.imageUrl ? `http://localhost:5000${res.data.imageUrl}` : null);
+        setImagePreview(
+          res.data.imageUrl ? `http://localhost:5000${res.data.imageUrl}` : null
+        );
       })
       .catch((err) => setError("Failed to load post"))
       .finally(() => setLoading(false));
@@ -54,7 +56,9 @@ const EditPostPage = () => {
 
   return (
     <div className="container mx-auto px-6 py-10 max-w-lg ">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Edit Post</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+        Edit Post
+      </h2>
       {imagePreview && (
         <img
           src={imagePreview}
@@ -67,7 +71,6 @@ const EditPostPage = () => {
         onSubmit={handleSubmit}
         onImageChange={handleImageChange}
       />
-   
     </div>
   );
 };
