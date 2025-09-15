@@ -15,7 +15,7 @@ const SignupPage = () => {
       const { data } = await signupUser({ name, email, password });
       localStorage.setItem("token", data.token); // save JWT
       navigate("/");
-      toast.success("Account created!, please login..");
+      toast.success("Account created!  please login..");
 
     } catch (error) {
       console.error("Signup failed:", error.response?.data || error.message);
