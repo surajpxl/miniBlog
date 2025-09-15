@@ -19,7 +19,7 @@ const PostDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+        const res = await axios.get(`https://miniblog-mq9e.onrender.com/api/posts/${id}`);
         setPost(res.data);
       } catch (err) {
         console.error(err);
@@ -35,7 +35,7 @@ const PostDetailPage = () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+      await axios.delete(`https://miniblog-mq9e.onrender.com/api/posts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/"); 
