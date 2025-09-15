@@ -13,14 +13,14 @@ MiniBlog is a modern, lightweight blogging platform built with **React** and **T
 
 ## Screenshots
 
-![Home Page](./frontend/public/home.png)  
-![Login ](./frontend/public/login.png)  
-![LoginSuccess](./frontend/public/login%20success.png  
-![SignUp ](./frontend/public/signup.png)  
-![Post Detail](./frontend/public/postDetail.png)  
-![Create Post](./frontend/public/createPost.png)  
-![Edit Post](./frontend/public/editPost.png)  
-![Pagination](./frontend/public/pagination.png)  
+![Home Page](./frontend/src/assets/home.png)  
+![Login ](./frontend/src/assets/login.png)  
+![LoginSuccess](./frontend/src/assets/login%20success.png  
+![SignUp ](./frontend/src/assets/signup.png)  
+![Post Detail](./frontend/src/assets/postDetail.png)  
+![Create Post](./frontend/src/assets/createPost.png)  
+![Edit Post](./frontend/src/assets/editPost.png)  
+![Pagination](./frontend/src/assets/pagination.png)  
 
 ## Technologies Used
 
