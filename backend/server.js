@@ -19,7 +19,11 @@ if (!fs.existsSync(uploadsDir)) {
 
 // Connect MongoDB
 mongoose.connect("mongodb+srv://guptasuraj4455_db_user:2Vx9IC9D8A1BgI5G@blogapp.lcqrn2q.mongodb.net/miniBlog")
+<<<<<<< HEAD
 
+=======
+")
+>>>>>>> 9ecea6011bf302a6839c51b32e9a2dcd75a62cfd
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
