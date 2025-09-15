@@ -1,10 +1,10 @@
-// models/Post.js
+
 import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema(
   {
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // optional if logged in
-    guestName: { type: String }, // optional if guest
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
+    guestName: { type: String }, 
     text: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
   },
@@ -13,8 +13,8 @@ const commentSchema = new mongoose.Schema(
 
 const likeSchema = new mongoose.Schema(
   {
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // optional if logged in
-    guestName: { type: String }, // optional if guest
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
+    guestName: { type: String }, 
     createdAt: { type: Date, default: Date.now },
   },
   { _id: true }

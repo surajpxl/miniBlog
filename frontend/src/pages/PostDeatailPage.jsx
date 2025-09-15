@@ -38,7 +38,7 @@ const PostDetailPage = () => {
       await axios.delete(`http://localhost:5000/api/posts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      navigate("/"); // go back to home
+      navigate("/"); 
     } catch (err) {
       console.error(err.response?.data || err.message);
       alert(err.response?.data?.error || "Failed to delete post");

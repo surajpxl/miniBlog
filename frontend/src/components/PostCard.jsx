@@ -103,7 +103,7 @@ const PostCard = ({ post, onDelete }) => {
         <button
           onClick={handleLike}
           className={`px-3 py-1 rounded ${
-            hasLiked ? "bg-red-500 text-white" : "bg-gray-300"
+            hasLiked ? "bg-gray-300" : "bg-gray-300"
           }`}
         >
           ❤️ {localPost.likes.length}

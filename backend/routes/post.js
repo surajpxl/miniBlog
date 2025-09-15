@@ -105,7 +105,7 @@ router.delete("/:id", auth, async (req, res) => {
 
 
 // PUT /api/posts/:id/like
-// PUT /api/posts/:id/like
+
 router.put("/:id/like", authOptional, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
