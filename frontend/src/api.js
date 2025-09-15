@@ -1,9 +1,7 @@
-import axios from 'axios';
-
-export const API_BASE_URL = import.meta.env.VITE_API_URL;
+import axios from "axios";
 
 const API = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: "http://localhost:5000/api", // change if deployed
 });
 
 // Automatically attach token if logged in
