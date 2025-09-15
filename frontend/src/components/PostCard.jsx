@@ -42,7 +42,7 @@ const PostCard = ({ post, onDelete }) => {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
       const res = await axios.put(
-        `https://miniblog-mq9e.onrender.com/api/posts/${post._id}/like`,
+        `https://miniblog-mq9e.onrender.com/${post._id}/like`,
         {},
         { headers }
       );
@@ -66,7 +66,7 @@ const PostCard = ({ post, onDelete }) => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const res = await axios.post(
-        `https://miniblog-mq9e.onrender.com/api/posts/${post._id}/comment`,
+        `https://miniblog-mq9e.onrender.com/${post._id}/comment`,
         { text: commentText },
         { headers }
       );
