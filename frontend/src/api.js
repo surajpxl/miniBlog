@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // change if deployed
+  baseURL: "https://miniblog-mq9e.onrender.com/api", // change if deployed
 });
 
 // Automatically attach token if logged in

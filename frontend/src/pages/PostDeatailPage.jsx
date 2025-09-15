@@ -49,7 +49,7 @@ const PostDetailPage = () => {
     if (!user) return alert("Login to like posts");
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/posts/${id}/like`,
+        `https://miniblog-mq9e.onrender.com/api/posts/${id}/like`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -66,7 +66,7 @@ const PostDetailPage = () => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const res = await axios.post(
-        `http://localhost:5000/api/posts/${id}/comment`,
+        `https://miniblog-mq9e.onrender.com/api/posts/${id}/comment`,
         { text: commentText },
         { headers }
       );
@@ -97,7 +97,7 @@ const PostDetailPage = () => {
 
         {post.imageUrl && (
           <img
-            src={`http://localhost:5000${post.imageUrl}`}
+            src={`https://miniblog-mq9e.onrender.com${post.imageUrl}`}
             alt={post.title}
             className="w-full max-h-96 object-cover rounded mb-4"
           />

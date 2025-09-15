@@ -13,11 +13,11 @@ const EditPostPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/posts/${id}`)
+      .get(`https://miniblog-mq9e.onrender.com/api/posts/${id}`)
       .then((res) => {
         setInitialData(res.data);
         setImagePreview(
-          res.data.imageUrl ? `http://localhost:5000${res.data.imageUrl}` : null
+          res.data.imageUrl ? `https://miniblog-mq9e.onrender.com${res.data.imageUrl}` : null
         );
       })
       .catch((err) => setError("Failed to load post"))
@@ -32,7 +32,7 @@ const EditPostPage = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.put(`http://localhost:5000/api/posts/${id}`, formData, {
+      await axios.put(`https://miniblog-mq9e.onrender.com/api/posts/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

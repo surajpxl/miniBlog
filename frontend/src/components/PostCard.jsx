@@ -27,7 +27,7 @@ const PostCard = ({ post, onDelete }) => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {
+      await axios.delete(`https://miniblog-mq9e.onrender.com/api/posts/${post._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (onDelete) onDelete(post._id);
@@ -42,7 +42,7 @@ const PostCard = ({ post, onDelete }) => {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
       const res = await axios.put(
-        `http://localhost:5000/api/posts/${post._id}/like`,
+        `https://miniblog-mq9e.onrender.com/api/posts/${post._id}/like`,
         {},
         { headers }
       );
@@ -66,7 +66,7 @@ const PostCard = ({ post, onDelete }) => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const res = await axios.post(
-        `http://localhost:5000/api/posts/${post._id}/comment`,
+        `https://miniblog-mq9e.onrender.com/api/posts/${post._id}/comment`,
         { text: commentText },
         { headers }
       );
@@ -82,7 +82,7 @@ const PostCard = ({ post, onDelete }) => {
     <div className="bg-white dark:bg-gray-800 dark:text-gray-200 shadow rounded-lg p-5 mb-6 hover:shadow-lg transition">
       {localPost.imageUrl && (
         <img
-          src={`http://localhost:5000${localPost.imageUrl}`}
+          src={`https://miniblog-mq9e.onrender.com${localPost.imageUrl}`}
           alt={localPost.title}
           className="w-full h-48 object-cover rounded mb-3"
         />

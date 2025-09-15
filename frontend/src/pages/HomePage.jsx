@@ -13,7 +13,7 @@ const HomePage = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/posts?page=${pageNumber}&limit=${limit}`
+        `https://miniblog-mq9e.onrender.com/api/posts?page=${pageNumber}&limit=${limit}`
       );
       setPosts(res.data.posts);
       setTotalPages(res.data.totalPages);

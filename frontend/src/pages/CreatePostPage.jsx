@@ -21,7 +21,7 @@ const CreatePostPage = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/posts",
+        "https://miniblog-mq9e.onrender.com/api/posts",
         formData,
         {
           headers: {
