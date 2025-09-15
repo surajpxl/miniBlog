@@ -1,10 +1,15 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
+// import express from "express";
+// import mongoose from "mongoose";
+// import cors from "cors";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 import authRoutes from "./routes/auth.js";
 import postRoutes from "./routes/post.js";
-import fs from "fs";
-import path from "path";
+// import fs from "fs";
+// import path from "path";
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 app.use(cors());
