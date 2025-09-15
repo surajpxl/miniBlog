@@ -18,7 +18,8 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Connect MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/miniblog")
+const mongo_URI = "mongodb+srv://guptasuraj4455_db_user:2Vx9IC9D8A1BgI5G@blogapp.lcqrn2q.mongodb.net/"
+mongoose.connect(mongo_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
