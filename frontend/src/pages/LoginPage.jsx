@@ -1,5 +1,4 @@
 import React, { useState} from "react";
-import { useEffect } from "react";
 import { loginUser } from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,9 +8,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
+   
 
   const handleLogin = async (e) => {
     e.preventDefault();
