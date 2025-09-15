@@ -27,7 +27,7 @@ const PostCard = ({ post, onDelete }) => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {
+      await axios.delete(`https://miniblog-duc8.onrender.com/api/posts/${post._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (onDelete) onDelete(post._id);
