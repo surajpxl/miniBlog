@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PostForm from "../components/PostForm";
+import API from "../api";
+import { API_BASE_URL } from "../api";
 
 const EditPostPage = () => {
   const { id } = useParams();
@@ -12,12 +14,12 @@ const EditPostPage = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/posts/${id}`)
+    API
+      .get(`api/posts/${id}`)
       .then((res) => {
         setInitialData(res.data);
         setImagePreview(
-          res.data.imageUrl ? `http://localhost:5000${res.data.imageUrl}` : null
+          res.data.imageUrl ? `${API_BASE_URL}${res.data.imageUrl}` : null
         );
       })
       .catch((err) => setError("Failed to load post"))
@@ -32,7 +34,7 @@ const EditPostPage = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.put(`http://localhost:5000/api/posts/${id}`, formData, {
+      await API.put(`/api/posts/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

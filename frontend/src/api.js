@@ -1,7 +1,9 @@
 import axios from "axios";
 
+export const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // change if deployed
+  baseURL: "process.env.REACT_APP_API_URL", // change if deployed
 });
 
 // Automatically attach token if logged in

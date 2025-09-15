@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PostCard from "../components/PostCard";
+import API from "../api";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -12,8 +13,8 @@ const HomePage = () => {
   const fetchPosts = async (pageNumber = 1) => {
     setLoading(true);
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/posts?page=${pageNumber}&limit=${limit}`
+      const res = await API.get(
+        `/api/posts?page=${pageNumber}&limit=${limit}`
       );
       setPosts(res.data.posts);
       setTotalPages(res.data.totalPages);

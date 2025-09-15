@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PostForm from "../components/PostForm";
+import API from "../api";
 
 const CreatePostPage = () => {
   const navigate = useNavigate();
@@ -20,8 +21,8 @@ const CreatePostPage = () => {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/posts",
+      const res = await API.post(
+        "/api/posts",
         formData,
         {
           headers: {
