@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import API, { API_BASE_URL } from "../api";
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -20,7 +19,7 @@ const PostDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await API.get(`/posts/${id}`);
+        const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
         setPost(res.data);
       } catch (err) {
         console.error(err);
@@ -36,7 +35,7 @@ const PostDetailPage = () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
 
     try {
-      await API.delete(`/posts/${id}`, {
+      await axios.delete(`http://localhost:5000/api/posts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/"); 
@@ -49,8 +48,8 @@ const PostDetailPage = () => {
   const handleLike = async () => {
     if (!user) return alert("Login to like posts");
     try {
-      const res = await API.put(
-        `/posts/${id}/like`,
+      const res = await axios.put(
+        `http://localhost:5000/api/posts/${id}/like`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -66,8 +65,8 @@ const PostDetailPage = () => {
 
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await API.post(
-        `posts/${id}/comment`,
+      const res = await axios.post(
+        `http://localhost:5000/api/posts/${id}/comment`,
         { text: commentText },
         { headers }
       );
@@ -98,7 +97,7 @@ const PostDetailPage = () => {
 
         {post.imageUrl && (
           <img
-            src={`${API_BASE_URL}${post.imageUrl}`}
+            src={`http://localhost:5000${post.imageUrl}`}
             alt={post.title}
             className="w-full max-h-96 object-cover rounded mb-4"
           />

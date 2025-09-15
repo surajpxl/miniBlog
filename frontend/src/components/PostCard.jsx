@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import API from "../api";
-import { API_BASE_URL } from "../api";
 
 const PostCard = ({ post, onDelete }) => {
-
- const navigate = useNavigate();
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
   const isOwner = user?._id && post.author?._id && user._id === post.author._id;
@@ -30,7 +27,7 @@ const PostCard = ({ post, onDelete }) => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
-      await API.delete(`/posts/${post._id}`, {
+      await axios.delete(`https://miniblog-duc8.onrender.com/api/posts/${post._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (onDelete) onDelete(post._id);
@@ -44,8 +41,8 @@ const PostCard = ({ post, onDelete }) => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const res = await API.put(
-        `/posts/${post._id}/like`,
+      const res = await axios.put(
+        `http://localhost:5000/api/posts/${post._id}/like`,
         {},
         { headers }
       );
@@ -68,8 +65,8 @@ const PostCard = ({ post, onDelete }) => {
 
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await API.post(
-        `/posts/${post._id}/comment`,
+      const res = await axios.post(
+        `http://localhost:5000/api/posts/${post._id}/comment`,
         { text: commentText },
         { headers }
       );
@@ -85,7 +82,7 @@ const PostCard = ({ post, onDelete }) => {
     <div className="bg-white dark:bg-gray-800 dark:text-gray-200 shadow rounded-lg p-5 mb-6 hover:shadow-lg transition">
       {localPost.imageUrl && (
         <img
-          src={`${API_BASE_URL}${localPost.imageUrl}`}
+          src={`http://localhost:5000${localPost.imageUrl}`}
           alt={localPost.title}
           className="w-full h-48 object-cover rounded mb-3"
         />
