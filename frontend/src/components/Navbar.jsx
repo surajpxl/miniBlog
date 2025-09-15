@@ -24,7 +24,8 @@ const Navbar = () => {
         {/* Center - Greeting */}
      <div className="absolute ml-20 left-1/2 transform -translate-x-1/2">
   <span className="text-gray-200 dark:text-gray-400">
-    Hello, <strong>{user.name}</strong>!
+    Hello, <strong>{user?.name || "Guest"}</strong>
+!
   </span>
 </div>
 
