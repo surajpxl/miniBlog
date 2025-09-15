@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginUser } from "../api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -15,10 +16,10 @@ const LoginPage = () => {
       localStorage.setItem("user", JSON.stringify(data.user)); // <-- important
       // save JWT
       navigate("/"); // redirect to home
-      alert("Login successful!");
+      toast.success("Login successful!");
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
-      alert("Login failed: " + (error.response?.data?.error || error.message));
+      toast.error("Login failed: " + (error.response?.data?.error || error.message));
     }
   };
 

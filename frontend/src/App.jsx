@@ -10,6 +10,9 @@ import EditPostPage from "./pages/EditPostPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const App = () => {
   return (
@@ -17,6 +20,7 @@ const App = () => {
       {" "}
       {/* Flex column for sticky footer */}
       <Router>
+          <ToastContainer />
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">
           <Routes>
