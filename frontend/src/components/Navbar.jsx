@@ -22,12 +22,13 @@ const Navbar = () => {
         </Link>
 
         {/* Center - Greeting */}
-     <div className="absolute ml-20 left-1/2 transform -translate-x-1/2">
-  <span className="text-gray-200 dark:text-gray-400">
-    Hello, <strong>{user?.name || "Guest"}</strong>
-!
-  </span>
-</div>
+      {user && (
+          <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2">
+            <span className="text-gray-200 dark:text-gray-400">
+              Hello, <strong>{user.name}</strong>!
+            </span>
+          </div>
+        )}
 
 
         {/* Right - Menu for larger screens */}
