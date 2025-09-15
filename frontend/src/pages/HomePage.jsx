@@ -14,7 +14,7 @@ const HomePage = () => {
     setLoading(true);
     try {
       const res = await API.get(
-        `/api/posts?page=${pageNumber}&limit=${limit}`
+        `/posts?page=${pageNumber}&limit=${limit}`
       );
       setPosts(res.data.posts);
       setTotalPages(res.data.totalPages);

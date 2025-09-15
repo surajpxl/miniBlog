@@ -34,7 +34,7 @@ const EditPostPage = () => {
     if (image) formData.append("image", image);
 
     try {
-      await API.put(`/api/posts/${id}`, formData, {
+      await API.put(`/posts/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

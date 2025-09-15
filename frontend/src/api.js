@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const API_BASE_URL = process.env.REACT_APP_API_URL;
+export const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const API = axios.create({
-  baseURL: "process.env.REACT_APP_API_URL", // change if deployed
+  baseURL: API_BASE_URL,
 });
 
 // Automatically attach token if logged in

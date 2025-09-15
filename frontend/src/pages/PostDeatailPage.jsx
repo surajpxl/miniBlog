@@ -20,7 +20,7 @@ const PostDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+        const res = await API.get(`/posts/${id}`);
         setPost(res.data);
       } catch (err) {
         console.error(err);
@@ -36,7 +36,7 @@ const PostDetailPage = () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+      await API.delete(`/posts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/"); 
@@ -50,7 +50,7 @@ const PostDetailPage = () => {
     if (!user) return alert("Login to like posts");
     try {
       const res = await API.put(
-        `/api/posts/${id}/like`,
+        `/posts/${id}/like`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -67,7 +67,7 @@ const PostDetailPage = () => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const res = await API.post(
-        `/api/posts/${id}/comment`,
+        `posts/${id}/comment`,
         { text: commentText },
         { headers }
       );

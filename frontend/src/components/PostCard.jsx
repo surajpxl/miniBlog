@@ -30,7 +30,7 @@ const PostCard = ({ post, onDelete }) => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
-      await API.delete(`/api/posts/${post._id}`, {
+      await API.delete(`/posts/${post._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (onDelete) onDelete(post._id);
@@ -45,7 +45,7 @@ const PostCard = ({ post, onDelete }) => {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
       const res = await API.put(
-        `/api/posts/${post._id}/like`,
+        `/posts/${post._id}/like`,
         {},
         { headers }
       );
@@ -69,7 +69,7 @@ const PostCard = ({ post, onDelete }) => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const res = await API.post(
-        `/api/posts/${post._id}/comment`,
+        `/posts/${post._id}/comment`,
         { text: commentText },
         { headers }
       );

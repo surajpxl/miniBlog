@@ -22,7 +22,7 @@ const CreatePostPage = () => {
 
     try {
       const res = await API.post(
-        "/api/posts",
+        "/posts",
         formData,
         {
           headers: {
