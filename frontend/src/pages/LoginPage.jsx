@@ -12,8 +12,7 @@ const LoginPage = () => {
     try {
       const { data } = await loginUser({ email, password });
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user)); // <-- important
-      // save JWT
+      localStorage.setItem("user", JSON.stringify(data.user)); 
       navigate("/"); // redirect to home
       alert("Login successful!");
     } catch (error) {
