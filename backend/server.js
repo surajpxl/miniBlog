@@ -1,17 +1,25 @@
-// import express from "express";
-// import mongoose from "mongoose";
-// import cors from "cors";
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import postRoutes from "./routes/post.js";
-// import fs from "fs";
-// import path from "path";
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const frontendPath = path.join(__dirname, "frontend", "dist");
+app.use(express.static(frontendPath));
+
+// ✅ Serve index.html for unknown routes (for SPA support)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
+
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 5000
