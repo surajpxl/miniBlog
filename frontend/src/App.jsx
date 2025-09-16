@@ -12,6 +12,7 @@ import SignupPage from "./pages/SignupPage";
 import PrivateRoute from "./components/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from "./ScrollToTop";
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </main>
+            <ScrollToTop/>
         <Footer />
       </BrowserRouter>
     </div>
