@@ -28,7 +28,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="text-2xl font-bold tracking-wide bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
+            className="text-2xl md:ml-10 font-bold tracking-wide bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
           >
             MiniBlog
           </Link>
