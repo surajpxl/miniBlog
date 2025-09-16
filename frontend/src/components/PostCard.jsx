@@ -156,13 +156,13 @@ const PostCard = ({ post, onDelete }) => {
         <div className="flex gap-2 mt-3 flex-wrap">
           <Link
             to={`/edit/${localPost._id}`}
-            className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+            className="px-3 py-1 bg-green-300 text-neutral-800 rounded hover:bg-neutral-400 hover:text-white"
           >
             ✏️ Edit
           </Link>
           <button
             onClick={handleDelete}
-            className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+            className="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200"
           >
             🗑️ Delete
           </button>

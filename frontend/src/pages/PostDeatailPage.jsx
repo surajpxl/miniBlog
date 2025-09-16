@@ -129,13 +129,13 @@ const PostDetailPage = () => {
             <>
               <Link
                 to={`/edit/${post._id}`}
-                className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                className="px-4 py-2 bg-neutral-300 text-neutral-800 rounded hover:bg-neutral-500 hover:text-white"
               >
                 ✏️ Edit
               </Link>
               <button
                 onClick={handleDelete}
-                className=" px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                className=" px-4 py-2 bg-red-100 text-red-700 rounded hover:bg-red-200"
               >
                 🗑️ Delete
               </button>

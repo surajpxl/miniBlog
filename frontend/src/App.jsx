@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -19,7 +19,7 @@ const App = () => {
     <div className="flex flex-col min-h-screen">
       {" "}
       {/* Flex column for sticky footer */}
-      <Router>
+      <BrowserRouter future={{ v7_startTransition: true }}>
           <ToastContainer />
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-6">
@@ -47,7 +47,7 @@ const App = () => {
           </Routes>
         </main>
         <Footer />
-      </Router>
+      </BrowserRouter>
     </div>
   );
 };

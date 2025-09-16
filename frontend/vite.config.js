@@ -9,4 +9,10 @@ export default defineConfig({
     extend: {},
   },
   plugins: [react(), tailwindcss() ],
+  server: {
+  port: 5173,
+  cors: true,
+  open: true,
+  host: true, // 👈 important
+},
 })

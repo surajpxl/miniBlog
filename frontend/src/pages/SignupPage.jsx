@@ -14,7 +14,7 @@ const SignupPage = () => {
     try {
       const { data } = await signupUser({ name, email, password });
       localStorage.setItem("token", data.token); // save JWT
-      navigate("/");
+      navigate("/login");
       toast.success("Account created!  please login..");
 
     } catch (error) {
@@ -55,7 +55,7 @@ const SignupPage = () => {
           required
         />
         <button
-          className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+          className="w-full font-semibold bg-neutral-300 text-neutral-800 px-6 py-2 rounded-lg hover:bg-neutral-400"
           type="submit"
         >
           Signup

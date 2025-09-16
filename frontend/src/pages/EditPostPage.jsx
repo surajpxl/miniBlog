@@ -56,7 +56,7 @@ const EditPostPage = () => {
 
   return (
     <div className="container mx-auto px-6 py-10 max-w-lg ">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+      <h2 className="text-2xl font-bold mb-6 text-neutral-800 hover:bg-neutral-400 tetx-neutral-800">
         Edit Post
       </h2>
       {imagePreview && (

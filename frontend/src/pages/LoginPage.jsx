@@ -30,7 +30,8 @@ const LoginPage = () => {
       <h1 className="font-bold text-2xl">Login</h1>
       <form
         onSubmit={handleLogin} // or handleSignup
-        className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 space-y-4"
+        className="max-w-md mx-auto bg-gradient-to-br from-neutral-10 via-neutral-50 to-neutral-200
+ shadow-lg rounded-lg p-6 space-y-4"
       >
         <input
           type="email"
@@ -50,7 +51,7 @@ const LoginPage = () => {
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+          className="w-full bg-neutral-300 text-neutral-800 px-6 py-2 rounded-lg hover:bg-neutral-400 font-semibold"
         >
           Login
         </button>
